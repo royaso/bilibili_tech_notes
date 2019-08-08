@@ -1,0 +1,14 @@
+sed '1i'"$(date)" test.ii
+
+stat -c '%w' test.ii |cut -f1 -d ' '
+
+
+sed -i '3s/.*//' test.ii
+
+
+ awk '/^$/{print NR}' test.ii
+
+
+ awk 'BEGIN{blank=0} ;/^$/{if(blank ==0 ){print NR; blank=1}}' test.ii
+
+

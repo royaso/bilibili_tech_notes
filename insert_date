@@ -1,0 +1,12 @@
+file=$1
+
+ct=$(stat -c '%w' $file|cut -f1 -d ' ')
+
+#echo $ct
+
+blank=$(awk 'NR <= 10' $file | awk 'BEGIN{blank=0};  /^$/{if (blank == 0) {print NR; blank=1} }')
+
+#echo $blank
+
+sed $blank"i"$ct $file |head
+
